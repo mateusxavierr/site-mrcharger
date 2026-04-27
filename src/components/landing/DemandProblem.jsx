@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, TrendingDown, Clock } from 'lucide-react';
 
-const SPLIT_IMAGE = '/images/intelbras-carregador.png';
+const SPLIT_IMAGE = `${import.meta.env.BASE_URL}images/intelbras-carregador.png`;
 
 const problems = [
   {
