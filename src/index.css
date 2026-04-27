@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --background: 210 14% 4%;
+    --foreground: 140 14% 96%;
+    --card: 210 10% 7%;
+    --card-foreground: 140 14% 96%;
+    --popover: 210 10% 7%;
+    --popover-foreground: 140 14% 96%;
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 8% 18%;
+    --secondary-foreground: 140 14% 96%;
+    --muted: 210 8% 14%;
+    --muted-foreground: 210 6% 55%;
+    --accent: 213 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 8% 18%;
+    --input: 210 8% 18%;
+    --ring: 213 100% 50%;
+    --chart-1: 213 100% 50%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 210 10% 7%;
+    --sidebar-foreground: 140 14% 96%;
+    --sidebar-primary: 213 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 8% 14%;
+    --sidebar-accent-foreground: 140 14% 96%;
+    --sidebar-border: 210 8% 18%;
+    --sidebar-ring: 213 100% 50%;
+    --primary-glow: 213 100% 60%;
+    /* Blocos de secção: um pouco mais claros que o fundo da página */
+    --section-surface-a: 215 16% 9%;
+    --section-surface-b: 215 14% 12%;
+  }
+
+  .dark {
+    --background: 210 14% 4%;
+    --foreground: 140 14% 96%;
+    --card: 210 10% 7%;
+    --card-foreground: 140 14% 96%;
+    --popover: 210 10% 7%;
+    --popover-foreground: 140 14% 96%;
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 8% 18%;
+    --secondary-foreground: 140 14% 96%;
+    --muted: 210 8% 14%;
+    --muted-foreground: 210 6% 55%;
+    --accent: 213 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 8% 18%;
+    --input: 210 8% 18%;
+    --ring: 213 100% 50%;
+    --chart-1: 213 100% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 210 10% 7%;
+    --sidebar-foreground: 140 14% 96%;
+    --sidebar-primary: 213 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 8% 14%;
+    --sidebar-accent-foreground: 140 14% 96%;
+    --sidebar-border: 210 8% 18%;
+    --sidebar-ring: 213 100% 50%;
+    --section-surface-a: 215 16% 9%;
+    --section-surface-b: 215 14% 12%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Scroll suave global */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animação de entrada: fade + slide up */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Animação de entrada: fade + slide in da esquerda */
+  @keyframes fadeSlideLeft {
+    from { opacity: 0; transform: translateX(-28px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .animate-fade-slide-left {
+    animation: fadeSlideLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Glow pulsante para elementos de destaque */
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+    50%       { box-shadow: 0 0 24px 6px hsl(var(--primary) / 0.25); }
+  }
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  /* Shimmer para badges e pills */
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+  }
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary) / 0.08) 0%,
+      hsl(var(--primary) / 0.20) 50%,
+      hsl(var(--primary) / 0.08) 100%
+    );
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Float suave para o botão WhatsApp flutuante */
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-6px); }
+  }
+  .animate-float {
+    animation: floatY 3s ease-in-out infinite;
+  }
+
+  /* Linha de energia animada */
+  @keyframes energyFlow {
+    0%   { transform: scaleX(0); transform-origin: left; }
+    50%  { transform: scaleX(1); transform-origin: left; }
+    51%  { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+  }
+  .animate-energy-flow {
+    animation: energyFlow 2.5s ease-in-out infinite;
+  }
+}
